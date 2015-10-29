@@ -1,7 +1,0 @@
-
-baseUrl: http://localhost:10083/
-
-users:
-  - role: admin
-    username: admin
-    password: admin

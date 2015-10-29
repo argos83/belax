@@ -1,8 +1,0 @@
-dependencies {
-    compile project(':marvin')
-    //compile 'org.glassfish.jersey.core:jersey-client:2.6'
-    compile 'com.taskadapter:redmine-java-api:2.4.0'
-    compile 'org.assertj:assertj-core:2.2.0'
-    compile 'org.yaml:snakeyaml:1.16'
-    testCompile 'junit:junit:4.12'
-}
