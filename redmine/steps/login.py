@@ -1,5 +1,5 @@
 import time
-from marvin.step import Step
+from marvin import Step
 
 class Login(Step):
 

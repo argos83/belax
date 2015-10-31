@@ -30,5 +30,10 @@ class RedmineTest(unittest.TestCase):
         time.sleep(1)
         print "project has 1 issue"
 
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
 if __name__ == '__main__':
     unittest.main()

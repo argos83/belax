@@ -4,6 +4,9 @@ from marvin.report.publisher import Publisher, Events
 
 class Step(object):
 
+    def __init__(self):
+        self._runtime_tags = []
+
     @property
     def name(self):
         return getattr(self.__class__, "NAME", self.__class__.__name__)
@@ -14,7 +17,11 @@ class Step(object):
 
     @property
     def tags(self):
-        return getattr(self.__class__, "TAGS", [])        
+        return self._runtime_tags + self.__class__._class_tags()
+       
+
+    def tag(self, *tags):
+        self._runtime_tags.extend(tags)
 
     def execute(self, *args, **kargs):
         start = int(time.time() * 1000)
@@ -50,3 +57,15 @@ class Step(object):
 
     def run(self, *args, **kargs):
         raise NotImplementedError("Method run must be redefined")   
+
+    @classmethod
+    def _class_tags(cls):
+        return cls._base_tags() + getattr(cls, 'TAGS', [])
+
+    @classmethod
+    def _base_tags(cls):
+        tags = []
+        for klass in cls.__bases__:
+            if issubclass(klass, Step) and klass != Step:
+                tags += klass._class_tags()
+        return tags        
