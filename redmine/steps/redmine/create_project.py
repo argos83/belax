@@ -9,3 +9,4 @@ class CreateProject(RedmineStep):
 
     def run(self, session, name, description):
         time.sleep(1)
+        return name

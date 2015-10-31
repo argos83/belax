@@ -1,0 +1,17 @@
+
+{
+    "setup": { 
+                "login": { "user": "admin", "password": "123"},
+                "project": {"summary": "algo", "description": "un proyecto"}
+
+              },
+
+    "iterations": [
+        {"summary": "primer issue"},
+        {"summary": "segundo issue"},
+        {"summary": "con descript", "description": "hola"}
+    ],
+
+    "tear_down": {}
+}
+
