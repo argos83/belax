@@ -1,11 +1,11 @@
 import time
-from marvin import Step
+from base_step import RedmineStep
 
-class CreateProject(Step):
+class CreateProject(RedmineStep):
     
     NAME = "Create Project"
     DESCRIPTION = "Creates a new project in redmine with the given settings"
-    TAGS = ["redmine", "projects"]
+    TAGS = ["projects"]
 
     def run(self, session, name, description):
         time.sleep(1)

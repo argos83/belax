@@ -1,7 +1,8 @@
 import unittest
 import time
-from steps.login import Login
-from steps.create_project import CreateProject
+
+from steps.redmine.login import Login
+from steps.redmine.create_project import CreateProject
 from marvin.report.event_logger import EventLogger
 
 event_logger = EventLogger()

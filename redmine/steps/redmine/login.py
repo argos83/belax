@@ -1,11 +1,11 @@
 import time
-from marvin import Step
+from base_step import RedmineStep
 
-class Login(Step):
+class Login(RedmineStep):
 
     NAME = "Login"
     DESCRIPTION = "Logs in with the given user and password"
-    TAGS = ["redmine", "users"]
+    TAGS = ["users"]
     
     def run(self, username, password):
         if username == "guest":
