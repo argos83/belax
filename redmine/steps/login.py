@@ -9,6 +9,6 @@ class Login(Step):
     
     def run(self, username, password):
         if username == "guest":
-            raise Exception("404")
+            raise KeyError("404")
         time.sleep(1)
         return "[%s]" % (username)

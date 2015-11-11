@@ -1,6 +1,7 @@
-from marvin import TestScript
-
 import time
+import sys
+
+from marvin import TestScript
 
 from steps.redmine.login import Login
 from steps.redmine.create_project import CreateProject
@@ -14,15 +15,26 @@ class CreateIssue(TestScript):
     TAGS = ["issues", "wip"]
 
     def setup(self, data):
+        # Login in the redmine
         login = data['login']
-        self.session = Login().execute(login['user'], login['password'])
-
+        after = lambda step, result: sys.stdout.write("We could have here test context specific assertions\n")
+        
+        self.session = Login().doing_after(after).execute(login['user'],
+                                                          login['password'])
+        
+        # Create a project
         project = data['project']
-        self.project = CreateProject().execute(self.session, project['summary'], project['description'])
+        self.project = CreateProject().execute(self.session, 
+                                               project['summary'],
+                                               project['description'])
 
     def run(self, data):
-        
-        CreateIssueStep().execute(self.session, self.project, data['summary'], data.get('description', "Default description"))
+        # Create an issue with the given settings
+        CreateIssueStep().execute(self.session,
+                                  self.project,
+                                  data['summary'],
+                                  data.get('description', "Default description"))
 
     def tear_down(self, _data):
-        print "log out"
+        # Clean up / logout, etc
+        pass

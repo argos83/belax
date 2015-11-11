@@ -1,5 +1,5 @@
-from publisher import Publisher
-from events import Events
+from marvin import Publisher
+from marvin import Events
 
 class EventLogger(object):
 
